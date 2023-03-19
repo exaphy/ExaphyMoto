@@ -12,59 +12,57 @@ struct ContentView: View {
     @State var isLoading = true
     
     var body: some View {
-        ZStack {
-            if isLoading {
-                WelcomeScreen()
-            } else {
-                TabView {
-                    NGPCView(data: dataNGPC, dataDetail: dataNGPCDetail)
-                        .tabItem {
-                            Label("NGPC", systemImage: "person")
-                        }
+        if isLoading {
+            WelcomeScreen()
+        } else {
+            TabView {
+                NGPCView(data: dataNGPC, dataDetail: dataNGPCDetail)
+                    .tabItem {
+                        Label("NGPC", systemImage: "person")
+                    }
                     
-                    MotoLiveView(data: dataMoto)
-                        .tabItem {
-                            Label("Swap Moto", systemImage: "person")
-                        }
+                MotoLiveView(data: dataMoto)
+                    .tabItem {
+                        Label("Swap Moto", systemImage: "person")
+                    }
                     
-                    NationalMainView(data: dataNational, dataDetail: dataNationalDetail)
-                        .tabItem {
-                            Label("National Hare", systemImage: "person")
-                        }
+                NationalMainView(data: dataNational, dataDetail: dataNationalDetail)
+                    .tabItem {
+                        Label("National Hare", systemImage: "person")
+                    }
                     
-                    SoCalMXView(data: dataSoCal)
-                        .tabItem {
-                            Label("SoCal MX", systemImage: "person")
-                        }
+                SoCalMXView(data: dataSoCal)
+                    .tabItem {
+                        Label("SoCal MX", systemImage: "person")
+                    }
                     
-                    MXTrackMainView(data: dataMXTrack, dataDetail: dataMXTrackDetail)
-                        .tabItem {
-                            Label("MX Tracks", systemImage: "person")
-                        }
-                }
+                MXTrackMainView(data: dataMXTrack, dataDetail: dataMXTrackDetail)
+                    .tabItem {
+                        Label("MX Tracks", systemImage: "person")
+                    }
             }
-        }
-        .onAppear {
-            DispatchQueue.global(qos: .userInteractive).async {
-                dataNGPC.fetchEvents()
-                dataNGPCDetail.fetchURLs()
-                
-                dataNGPCDetail.fetchDetails()
-                
-                dataMoto.fetchImages()
-                
-                dataNational.fetchEvents()
-                dataNationalDetail.fetchURLs()
-                dataNationalDetail.fetchDetails()
-                
-                dataSoCal.fetchEvents()
-                
-                dataMXTrack.fetchTracks()
-                
-                dataMXTrackDetail.fetchURLs()
-                dataMXTrackDetail.fetchDetails()
-                DispatchQueue.main.async {
-                    isLoading = false
+            .onAppear {
+                DispatchQueue.global(qos: .userInteractive).async {
+                    dataNGPC.fetchEvents()
+                    dataNGPCDetail.fetchURLs()
+                    
+                    dataNGPCDetail.fetchDetails()
+                    
+                    dataMoto.fetchImages()
+                    
+                    dataNational.fetchEvents()
+                    dataNationalDetail.fetchURLs()
+                    dataNationalDetail.fetchDetails()
+                    
+                    dataSoCal.fetchEvents()
+                    
+                    dataMXTrack.fetchTracks()
+                    
+                    dataMXTrackDetail.fetchURLs()
+                    dataMXTrackDetail.fetchDetails()
+                    DispatchQueue.main.async {
+                        isLoading = false
+                    }
                 }
             }
         }
