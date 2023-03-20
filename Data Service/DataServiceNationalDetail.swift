@@ -57,7 +57,7 @@ class DataServiceNationalDetail: ObservableObject {
                             if let otherFeesPosition = otherFeesPosition {
                                 let calculatedDistance = otherFeesPosition - generalInfoPosition
                                 for i in 0...calculatedDistance {
-                                    if !sortedCategories[generalInfoPosition + i].contains("Other Fees") && !sortedCategories[generalInfoPosition + i].contains("GENERAL INFO") && sortedCategories[generalInfoPosition + i] != "" {
+                                    if !sortedCategories[generalInfoPosition + i].contains("Other Fees") && !sortedCategories[generalInfoPosition + i].contains("GENERAL INFO") && !sortedCategories[generalInfoPosition + i].trimmingCharacters(in: .whitespaces).isEmpty {
                                         generalInfo.append(sortedCategories[generalInfoPosition + i].trimmingCharacters(in: .whitespaces))
                                    }
                                 }
