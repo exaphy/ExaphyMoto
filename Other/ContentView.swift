@@ -14,6 +14,28 @@ struct ContentView: View {
     var body: some View {
         if isLoading {
             WelcomeScreen()
+                .onAppear {
+                    DispatchQueue.global(qos: .userInteractive).async {
+                        dataNGPC.fetchEvents()
+                        dataNGPCDetail.fetchURLs()
+                        dataNGPCDetail.fetchDetails()
+                        
+                        dataMoto.fetchImages()
+                        
+                        dataNational.fetchEvents()
+                        dataNationalDetail.fetchURLs()
+                        dataNationalDetail.fetchDetails()
+                        
+                        dataSoCal.fetchEvents()
+                        
+                        dataMXTrack.fetchTracks()
+                        dataMXTrackDetail.fetchURLs()
+                        dataMXTrackDetail.fetchDetails()
+                        DispatchQueue.main.async {
+                            isLoading = false
+                        }
+                    }
+                }
         } else {
             TabView {
                 NGPCView(data: dataNGPC, dataDetail: dataNGPCDetail)
@@ -40,30 +62,6 @@ struct ContentView: View {
                     .tabItem {
                         Label("MX Tracks", systemImage: "person")
                     }
-            }
-            .onAppear {
-                DispatchQueue.global(qos: .userInteractive).async {
-                    dataNGPC.fetchEvents()
-                    dataNGPCDetail.fetchURLs()
-                    
-                    dataNGPCDetail.fetchDetails()
-                    
-                    dataMoto.fetchImages()
-                    
-                    dataNational.fetchEvents()
-                    dataNationalDetail.fetchURLs()
-                    dataNationalDetail.fetchDetails()
-                    
-                    dataSoCal.fetchEvents()
-                    
-                    dataMXTrack.fetchTracks()
-                    
-                    dataMXTrackDetail.fetchURLs()
-                    dataMXTrackDetail.fetchDetails()
-                    DispatchQueue.main.async {
-                        isLoading = false
-                    }
-                }
             }
         }
     }
