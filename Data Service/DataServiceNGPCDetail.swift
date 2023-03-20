@@ -67,7 +67,7 @@ class DataServiceNGPCDetail: ObservableObject {
                         var introDetails = [String]()
                         if let gateTimePosition = gateTimePosition { 
                             for i in 1...gateTimePosition {
-                                if !sortedCategories[i].contains("Track Preview") && !sortedCategories[i].contains("Gate Times") && sortedCategories[i] != " " && !sortedCategories[i].contains("Live Stream") && sortedCategories[i] != "  " {
+                                if !sortedCategories[i].contains("Track Preview") && !sortedCategories[i].contains("Gate Times") && !sortedCategories[i].trimmingCharacters(in: .whitespaces).isEmpty && !sortedCategories[i].contains("Live Stream") {
                                     introDetails.append(sortedCategories[i].trimmingCharacters(in: .whitespaces))  
                                   }
                             }
@@ -114,7 +114,7 @@ class DataServiceNGPCDetail: ObservableObject {
                             if let eventDetailPosition = eventDetailPosition {
                                 let calculatedDistance = eventDetailPosition - entryFeePosition 
                                 for i in 0...calculatedDistance {
-                                    if !sortedCategories[entryFeePosition + i].contains("Event Details") && !sortedCategories[entryFeePosition + i].contains("Entry Fees (Pre/Post") &&  sortedCategories[entryFeePosition + i] != " " {
+                                    if !sortedCategories[entryFeePosition + i].contains("Event Details") && !sortedCategories[entryFeePosition + i].contains("Entry Fees (Pre/Post") &&  !sortedCategories[entryFeePosition + i].trimmingCharacters(in: .whitespaces).isEmpty {
                                         entryFee.append(sortedCategories[entryFeePosition + i].trimmingCharacters(in: .whitespaces))
                                     }                               
                                 }
@@ -126,7 +126,7 @@ class DataServiceNGPCDetail: ObservableObject {
                             if let classInfoPosition = classInfoPosition {
                                 let calculatedDistance = classInfoPosition - eventDetailPosition 
                                 for i in 0...calculatedDistance {
-                                    if !sortedCategories[eventDetailPosition + i].contains("Event Details") && !sortedCategories[eventDetailPosition + i].contains("Class Info") && sortedCategories[eventDetailPosition + i] != "" && sortedCategories[eventDetailPosition + i] != " " {
+                                    if !sortedCategories[eventDetailPosition + i].contains("Event Details") && !sortedCategories[eventDetailPosition + i].contains("Class Info") &&  !sortedCategories[eventDetailPosition + i].trimmingCharacters(in: .whitespaces).isEmpty {
                                         eventDetail.append(sortedCategories[eventDetailPosition + i].trimmingCharacters(in: .whitespaces))
                                     } 
                                 }
@@ -138,7 +138,7 @@ class DataServiceNGPCDetail: ObservableObject {
                             if let classInfoPosition = classInfoPosition {
                                 let calculatedDistance = skillLevelsPosition - classInfoPosition 
                                 for i in 0...calculatedDistance {
-                                    if !sortedCategories[classInfoPosition + i].contains("Skill Levels") && !sortedCategories[classInfoPosition + i].contains("Class Info") && sortedCategories[classInfoPosition + i] != "" && sortedCategories[classInfoPosition + i] != " " {
+                                    if !sortedCategories[classInfoPosition + i].contains("Skill Levels") && !sortedCategories[classInfoPosition + i].contains("Class Info") &&  !sortedCategories[classInfoPosition + i].trimmingCharacters(in: .whitespaces).isEmpty {
                                         classDetails.append(sortedCategories[classInfoPosition + i].trimmingCharacters(in: .whitespaces))
                                     } 
                                 }
@@ -161,7 +161,7 @@ class DataServiceNGPCDetail: ObservableObject {
                         if let miscPosition = sortedCategories.firstIndex(where: { $0.contains("Misc. Info")}) {
                             let calculatedDistance = (sortedCategories.count - miscPosition) - 1
                             for i in 0...calculatedDistance {
-                                if sortedCategories[miscPosition + i] != "" && sortedCategories[miscPosition + i] != " " && sortedCategories[miscPosition + i] != "  " && !sortedCategories[miscPosition + i].contains("Misc. Info") {
+                                if !sortedCategories[miscPosition + i].trimmingCharacters(in: .whitespaces).isEmpty && !sortedCategories[miscPosition + i].contains("Misc. Info") {
                                     misc.append(sortedCategories[miscPosition + i].trimmingCharacters(in: .whitespaces))
 
                                 } 

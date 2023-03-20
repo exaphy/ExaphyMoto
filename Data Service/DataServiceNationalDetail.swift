@@ -69,7 +69,7 @@ class DataServiceNationalDetail: ObservableObject {
                             if let otherFeesPosition = otherFeesPosition {
                                 let calculatedDistance = costPosition - otherFeesPosition
                                 for i in 0...calculatedDistance {
-                                    if !sortedCategories[otherFeesPosition + i].contains("What’s it going to cost me to show up and race?") && !sortedCategories[otherFeesPosition + i].contains("Other Fees") && sortedCategories[otherFeesPosition + i] != " " && sortedCategories[otherFeesPosition + i] != "" {
+                                    if !sortedCategories[otherFeesPosition + i].contains("What’s it going to cost me to show up and race?") && !sortedCategories[otherFeesPosition + i].contains("Other Fees") &&  !sortedCategories[otherFeesPosition + i].trimmingCharacters(in: .whitespaces).isEmpty {
                                         otherFees.append(sortedCategories[otherFeesPosition + i].trimmingCharacters(in: .whitespaces))
                                     } 
                                 }
@@ -81,7 +81,7 @@ class DataServiceNationalDetail: ObservableObject {
                             if let specialPosition = specialPosition {
                                 let calculatedDistance = specialPosition - costPosition
                                 for i in 0...calculatedDistance {
-                                    if !sortedCategories[costPosition + i].contains("What’s it going to cost me to show up and race?") && !sortedCategories[costPosition + i].contains("Anything special I need to bring for this race?") && sortedCategories[costPosition + i] != "" && sortedCategories[costPosition + i] != " " {
+                                    if !sortedCategories[costPosition + i].contains("What’s it going to cost me to show up and race?") && !sortedCategories[costPosition + i].contains("Anything special I need to bring for this race?") && !sortedCategories[costPosition + i].trimmingCharacters(in: .whitespaces).isEmpty {
                                         costs.append(sortedCategories[costPosition + i].trimmingCharacters(in: .whitespaces))
                                     }
                                 }
@@ -90,7 +90,7 @@ class DataServiceNationalDetail: ObservableObject {
                             var special = [String]()
                             if let specialPosition = specialPosition {
                                 for i in specialPosition..<sortedCategories.count {
-                                    if !sortedCategories[i].contains("Anything special I need to bring for this race?") && sortedCategories[i] != "" && sortedCategories[i] != " " {
+                                    if !sortedCategories[i].contains("Anything special I need to bring for this race?") && !sortedCategories[i].trimmingCharacters(in: .whitespaces).isEmpty {
                                         special.append((sortedCategories[i]).trimmingCharacters(in: .whitespaces))
                                     }
                                 }
