@@ -168,40 +168,40 @@ class DataServiceNGPCDetail: ObservableObject {
                             }
                         }
                     
-                        if intro.filter({ $0.title == title }).count == 0 {
+                        if intro.filter({ $0.title == title }).isEmpty {
                             intro.append(Intro(url: newURL, title: title, intro: introDetails))
                             }
-                        if gateTimes.filter({ $0.title == title}).count == 0 {
+                        if gateTimes.filter({ $0.title == title}).isEmpty {
                             gateTimes.append(GateTimes(title: title, gateTimes: gateTime))
                         }
-                        if gateFees.filter({ $0.title == title}).count == 0 {
+                        if gateFees.filter({ $0.title == title}).isEmpty {
                             gateFees.append(GateFees(title: title, gateFees: gateFee))
                         }
                         let signUpLink = URL(string: "http://entergp.com/")
                         if let signUpLink = signUpLink {
-                            if signUps.filter({ $0.title == title}).count == 0 {
+                            if signUps.filter({ $0.title == title}).isEmpty {
                                 signUps.append(SignUps(title: title, signUpLink: signUpLink, signUps: signUp))
                             }
                         }
-                        if entryFees.filter({ $0.title == title}).count == 0 {
+                        if entryFees.filter({ $0.title == title}).isEmpty {
                             entryFees.append(EntryFees(title: title, entryFees: entryFee))
                         }
                         let districtURL = URL(string: "https://www.amadistrict37.org/series-registration.html")
                         let amaURL = URL(string: "https://americanmotorcyclist.com/join-the-ama/")
                         if let amaURL = amaURL {
                             if let districtURL = districtURL {
-                                if self.eventDetails.filter({ $0.title == title}).count == 0 {
+                                if self.eventDetails.filter({ $0.title == title}).isEmpty {
                                     self.eventDetails.append(EventDetails(title: title, districtURL: districtURL, amaURL: amaURL, eventDetails: eventDetail))
                                 }
                             }
                         }
-                        if classInfo.filter({ $0.title == title}).count == 0 {
+                        if classInfo.filter({ $0.title == title}).isEmpty {
                             classInfo.append(ClassInfo(title: title, classInfo: classDetails))
                         }
-                        if skillLevels.filter({ $0.title == title}).count == 0 {
+                        if skillLevels.filter({ $0.title == title}).isEmpty {
                             skillLevels.append(SkillLevels(title: title, skillLevels: skillLevel))
                         }
-                        if miscData.filter({ $0.title == title}).count == 0 {
+                        if miscData.filter({ $0.title == title}).isEmpty {
                             miscData.append(Misc(title: title, info: misc))
                         }
                     }

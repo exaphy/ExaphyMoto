@@ -104,23 +104,23 @@ class DataServiceNationalDetail: ObservableObject {
                             for i in generalInfo {
                             if i.contains("Which round is it?") {
                                round = i
-                                if self.generalInfo.filter({ $0.title.contains(round)}).count == 0 {
+                                if self.generalInfo.filter({ $0.title.contains(round)}).isEmpty {
                                     self.generalInfo.append(GeneralInfo(title: round, generalInfo: generalInfo))
                                     }
                                 
-                                if self.otherFees.filter({ $0.title.contains(round)}).count == 0 {
+                                if self.otherFees.filter({ $0.title.contains(round)}).isEmpty {
                                     self.otherFees.append(OtherFees(title: round, otherFees: otherFees))
                                 }
                                 
-                                if costInfo.filter({ $0.title.contains(round)}).count == 0 {
+                                if costInfo.filter({ $0.title.contains(round)}).isEmpty {
                                     self.costInfo.append(CostInfo(title: round, costInfo: costs))
                                 }
                                 
-                                if specialInfo.filter({ $0.title.contains(round)}).count == 0 {
+                                if specialInfo.filter({ $0.title.contains(round)}).isEmpty {
                                     self.specialInfo.append(SpecialInfo(title: round, specialInfo: special))
                                 }
                                 
-                                if self.schedule.filter({ $0.title.contains(round)}).count == 0 {
+                                if self.schedule.filter({ $0.title.contains(round)}).isEmpty {
                                     self.schedule.append(Schedule(title: round, url: newURL, schedule: schedule))
                                 }
                             }
@@ -128,7 +128,7 @@ class DataServiceNationalDetail: ObservableObject {
                     }
                 }
                 } catch {
-                //    print("An error has occured in DataServiceNationalDetail, fetchDetails: \(error)")
+                    print("An error has occured in DataServiceNationalDetail, fetchDetails: \(error)")
                 }
             }
         }

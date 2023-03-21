@@ -9,6 +9,8 @@ struct ContentView: View {
     @StateObject var dataSoCal = DataServiceSoCalMain()
     @StateObject var dataMXTrack = DataServiceMXTrack() 
     @StateObject var dataMXTrackDetail = DataServiceMXTrackDetail()
+    @StateObject var dataNorCal = DataServiceNorCalMain()
+    @StateObject var dataNorCalDetail = DataServiceNorCalDetail() 
     @State var isLoading = true
     
     var body: some View {
@@ -16,21 +18,23 @@ struct ContentView: View {
             WelcomeScreen()
                 .onAppear {
                     DispatchQueue.global(qos: .userInteractive).async {
-                        dataNGPC.fetchEvents()
-                        dataNGPCDetail.fetchURLs()
-                        dataNGPCDetail.fetchDetails()
-                        
-                        dataMoto.fetchImages()
-                        
-                        dataNational.fetchEvents()
-                        dataNationalDetail.fetchURLs()
-                        dataNationalDetail.fetchDetails()
-                        
-                        dataSoCal.fetchEvents()
-                        
-                        dataMXTrack.fetchTracks()
-                        dataMXTrackDetail.fetchURLs()
-                        dataMXTrackDetail.fetchDetails()
+                      //  dataNGPC.fetchEvents()
+                      //  dataNGPCDetail.fetchURLs()
+                     //   dataNGPCDetail.fetchDetails()
+                      //  dataMoto.fetchImages()
+                    //    dataNational.fetchEvents()
+                     //   dataNationalDetail.fetchURLs()
+                     //   dataNationalDetail.fetchDetails()
+                    //    dataSoCal.fetchEvents()
+                   //     dataMXTrack.fetchTracks()
+                    //    dataMXTrackDetail.fetchURLs()
+                   //     dataMXTrackDetail.fetchDetails()
+                        dataNorCal.fetchMotocross() 
+                        dataNorCal.fetchCrossCountry()
+                        dataNorCalDetail.fetchMotocrossURLs() 
+                        dataNorCalDetail.fetchCrossCountryURLs()
+                        dataNorCalDetail.getMotocrossDetails()
+                        dataNorCalDetail.getCrossCountryDetails()
                         DispatchQueue.main.async {
                             isLoading = false
                         }
@@ -38,7 +42,7 @@ struct ContentView: View {
                 }
         } else {
             TabView {
-                NGPCView(data: dataNGPC, dataDetail: dataNGPCDetail)
+            NGPCView(data: dataNGPC, dataDetail: dataNGPCDetail)
                     .tabItem {
                         Label("NGPC", systemImage: "person")
                     }
@@ -61,6 +65,11 @@ struct ContentView: View {
                 MXTrackMainView(data: dataMXTrack, dataDetail: dataMXTrackDetail)
                     .tabItem {
                         Label("MX Tracks", systemImage: "person")
+                    }
+                
+                NorCalMainView(data: dataNorCal, dataDetail: dataNorCalDetail) 
+                    .tabItem {
+                        Label("NorCal MX", systemImage: "person")
                     }
             }
         }
