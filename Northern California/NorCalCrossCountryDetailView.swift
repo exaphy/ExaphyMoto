@@ -33,7 +33,7 @@ struct NorCalCrossCountryDetailView: View {
                 for i in event.crossCountryDetails {
                     if i.title == eventMain.event {
                         if !i.website.isEmpty {
-                            let url = URL(string: i.website) 
+                            let url = URL(string: i.website.trimmingCharacters(in: .whitespaces)) 
                             if let url = url {
                                 UIApplication.shared.open(url)
                             }

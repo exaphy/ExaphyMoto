@@ -65,12 +65,16 @@ class DataServiceNorCalDetail: ObservableObject {
                     let joinedWebsite = website.joined()
                     let finalWebsite = joinedWebsite.components(separatedBy: "Related")
                     let websitePosition = finalWebsite.firstIndex(where: { $0.contains("http")})
+                    var finalLocation = ""
+                    for i in location {
+                        finalLocation = i.replacingOccurrences(of: "Location", with: "Location:")
+                    }
                     
                     if !location.isEmpty && motocrossDetails.filter ({ $0.title == title[0]}).isEmpty {
                         if let websitePosition = websitePosition {
-                            motocrossDetails.append(NorCalMotocrossDetail(website: finalWebsite[websitePosition], title: title[0], date: time[0], time: time[1], location: location[0]))
+                            motocrossDetails.append(NorCalMotocrossDetail(website: finalWebsite[websitePosition], title: title[0], date: time[0], time: time[1], location: finalLocation))
                         } else {
-                            motocrossDetails.append(NorCalMotocrossDetail(website: "", title: title[0], date: time[0], time: time[1], location: location[0]))
+                            motocrossDetails.append(NorCalMotocrossDetail(website: "", title: title[0], date: time[0], time: time[1], location: finalLocation))
                         }
                     } else if location.isEmpty && motocrossDetails.filter ({ $0.title == title[0]}).isEmpty {
                         if let websitePosition = websitePosition {
@@ -101,12 +105,16 @@ class DataServiceNorCalDetail: ObservableObject {
                     let joinedWebsite = website.joined()
                     let finalWebsite = joinedWebsite.components(separatedBy: "Related")
                     let websitePosition = finalWebsite.firstIndex(where: { $0.contains("http")})
+                    var finalLocation = ""
+                    for i in location {
+                        finalLocation = i.replacingOccurrences(of: "Location", with: "Location:")
+                    }
                     
                     if !location.isEmpty && crossCountryDetails.filter ({ $0.title == title[0]}).isEmpty {
                         if let websitePosition = websitePosition {
-                            crossCountryDetails.append(NorCalCrossCountryDetails(website: finalWebsite[websitePosition], title: title[0], date: time[0], time: time[1], location: location[0]))
+                            crossCountryDetails.append(NorCalCrossCountryDetails(website: finalWebsite[websitePosition], title: title[0], date: time[0], time: time[1], location: finalLocation))
                         } else {
-                            crossCountryDetails.append(NorCalCrossCountryDetails(website: "", title: title[0], date: time[0], time: time[1], location: location[0]))
+                            crossCountryDetails.append(NorCalCrossCountryDetails(website: "", title: title[0], date: time[0], time: time[1], location: finalLocation))
                         }
                     } else if location.isEmpty && crossCountryDetails.filter ({ $0.title == title[0]}).isEmpty {
                         if let websitePosition = websitePosition {
