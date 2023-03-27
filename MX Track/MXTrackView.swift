@@ -7,8 +7,8 @@ struct MXTrackView: View {
         VStack(alignment: .leading) {
             Text(track.track) 
             Text(track.trackInfo)
-                .font(.caption)
-                .foregroundColor(.gray) 
+                .font(.caption.bold())
+                .foregroundColor(.gray)
         }
     }
 }

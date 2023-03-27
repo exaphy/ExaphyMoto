@@ -11,6 +11,8 @@ struct ContentView: View {
     @StateObject var dataMXTrackDetail = DataServiceMXTrackDetail()
     @StateObject var dataNorCal = DataServiceNorCalMain()
     @StateObject var dataNorCalDetail = DataServiceNorCalDetail() 
+    @StateObject var dataGNC = DataServiceGNCMain()
+    @StateObject var dataGNCDetail = DataServiceGNCDetail()
     @State var isLoading = true
     
     var body: some View {
@@ -29,12 +31,15 @@ struct ContentView: View {
                    //     dataMXTrack.fetchTracks()
                     //    dataMXTrackDetail.fetchURLs()
                    //     dataMXTrackDetail.fetchDetails()
-                        dataNorCal.fetchMotocross() 
-                        dataNorCal.fetchCrossCountry()
-                        dataNorCalDetail.fetchMotocrossURLs() 
-                        dataNorCalDetail.fetchCrossCountryURLs()
-                        dataNorCalDetail.getMotocrossDetails()
-                        dataNorCalDetail.getCrossCountryDetails()
+                    //    dataNorCal.fetchMotocross() 
+                     //   dataNorCal.fetchCrossCountry()
+                   //     dataNorCalDetail.fetchMotocrossURLs() 
+                    //    dataNorCalDetail.fetchCrossCountryURLs()
+                     //   dataNorCalDetail.getMotocrossDetails()
+                     //   dataNorCalDetail.getCrossCountryDetails()
+                        dataGNC.fetchEvents()
+                        dataGNCDetail.fetchURLs()
+                        
                         DispatchQueue.main.async {
                             isLoading = false
                         }
@@ -70,6 +75,11 @@ struct ContentView: View {
                 NorCalMainView(data: dataNorCal, dataDetail: dataNorCalDetail) 
                     .tabItem {
                         Label("NorCal MX", systemImage: "person")
+                    }
+                
+                GNCMainView(data: dataGNC)
+                    .tabItem {
+                        Label("GNC Racing", systemImage: "person")
                     }
             }
         }

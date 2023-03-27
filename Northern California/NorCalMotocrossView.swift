@@ -8,7 +8,7 @@ struct NorCalMotocrossView: View {
             Text(event.event) 
             Text(event.date) 
                 .foregroundColor(.gray)  
-                .font(.caption)
+                .font(.caption.bold())
         }
     }
 }

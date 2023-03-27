@@ -1,15 +1,14 @@
 import SwiftUI
 
-struct NorCalCrossCountryView: View {
-    let event: NorCalCrossCountry
+struct GNCEventView: View {
+    let event: GNCEvent
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(event.event) 
-            Text(event.date) 
-                .foregroundColor(.gray)  
+            Text(event.date)
                 .font(.caption.bold())
+                .foregroundColor(.gray)
         }
     }
 }
-
