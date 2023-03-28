@@ -10,11 +10,8 @@ struct GNCDetailView: View {
             ForEach(details.details, id: \.self) { detail in
                 if detail.title == event.event {
                     Text(detail.title) 
-                    Text("Click here to buy tickets")
-                        .foregroundColor(.blue) 
-                        .onTapGesture {
-                            showAlert = true 
-                        }
+                    Text("https://www.tixr.com/groups/gnccracing")
+                        
                     Section("Online - Adults (12+) / Kids (6-11)") {
                         LabeledContent("Thurs - Sun", value: detail.admissions[0])
                         LabeledContent("Fri - Sun", value: detail.admissions[1])
