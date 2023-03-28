@@ -39,6 +39,7 @@ struct ContentView: View {
                      //   dataNorCalDetail.getCrossCountryDetails()
                         dataGNC.fetchEvents()
                         dataGNCDetail.fetchURLs()
+                        dataGNCDetail.fetchDetails() 
                         
                         DispatchQueue.main.async {
                             isLoading = false
@@ -77,7 +78,7 @@ struct ContentView: View {
                         Label("NorCal MX", systemImage: "person")
                     }
                 
-                GNCMainView(data: dataGNC)
+                GNCMainView(data: dataGNC, dataDetail: dataGNCDetail)
                     .tabItem {
                         Label("GNC Racing", systemImage: "person")
                     }
