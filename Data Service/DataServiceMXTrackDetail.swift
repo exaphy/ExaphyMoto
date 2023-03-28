@@ -37,7 +37,7 @@ class DataServiceMXTrackDetail: ObservableObject {
                     let details = try document.getElementsByClass("track-info")
                     var trackInfo = [String]()
                     
-                    for i in details.array() {
+                    for _ in details.array() {
                         let eventText = try? details.text(trimAndNormaliseWhitespace: false) 
                         if let eventText = eventText {
                             let sortedCategories = eventText.components(separatedBy: "\n")

@@ -98,7 +98,7 @@ struct ScheduleNational: View {
     var body: some View {
         ForEach(detail.schedule) {
             if event.title.contains($0.title.suffix(1)) {
-                Text("Due to limitations, please tap here to access the days the events correspond to.")
+                Text("Please tap here to access the days the events correspond to.")
                     .onTapGesture {
                         showAlert = true
                     }

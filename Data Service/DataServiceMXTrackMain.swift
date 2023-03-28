@@ -15,7 +15,7 @@ class DataServiceMXTrack: ObservableObject {
                
                 var trackPosition = 0
                 var trackLocations = [String]()
-                for i in trackDetails {
+                for _ in trackDetails {
                     let trackSplit = trackDetails[trackPosition].components(separatedBy: "Location:") 
                     trackPosition += 1
                     trackLocations.append(trackSplit[1]) 

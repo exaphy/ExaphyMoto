@@ -34,7 +34,7 @@ class DataServiceGNCDetail: ObservableObject {
                 let title = try document.getElementsByClass("header_xl display_font").eachText() 
                 var admissions = try document.getElementsByClass("ui_table ui_table_zebra mce-item-table").eachText()
                 var otherAdmissions = try document.getElementsByClass("ui_table ui_table_zebra").eachText() 
-                var details = try document.getElementsByClass("block_container text_content").eachText() 
+                let details = try document.getElementsByClass("block_container text_content").eachText() 
                 var unprocessedAdmissions = [String]()
                 var processedAdmissions = [String]()
                 var processedTitles = [String]()
@@ -97,7 +97,7 @@ class DataServiceGNCDetail: ObservableObject {
                 for i in title {
                     processedTitles.append(i.replacingOccurrences(of: "Rd", with: "Round"))
                 }
-                self.details.append(GNCDetail(title: processedTitles[0], admissions: processedAdmissions, details: sentences))
+                self.details.append(GNCDetail(title: processedTitles[0], url: url, admissions: processedAdmissions, details: sentences))
             } catch {
                 print("An error has occured in DataServiceGNCDetail, fetchDetails, for url in self.urls: \(error)")
             }

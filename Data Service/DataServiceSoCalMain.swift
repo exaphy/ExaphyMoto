@@ -138,7 +138,7 @@ class DataServiceSoCalMain: ObservableObject {
                                            var april = [String]()
                                            if let aprilPosition = aprilPosition {
                                                april = LACRSplit.filter { !$0.contains("Mar")}
-                                               for i in aprilPosition..<LACRSplit.count {
+                                               for _ in aprilPosition..<LACRSplit.count {
                                                    LACRSplit.remove(at: aprilPosition) 
                                                }
                                            }

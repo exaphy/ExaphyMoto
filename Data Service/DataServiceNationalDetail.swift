@@ -50,7 +50,6 @@ class DataServiceNationalDetail: ObservableObject {
                         let otherFeesPosition = sortedCategories.firstIndex(where: { $0.contains("Other Fees")})
                         let costPosition = sortedCategories.firstIndex(where: { $0.contains("What’s it going to cost me to show up and race?")})
                         let specialPosition = sortedCategories.firstIndex(where: { $0.contains("Anything special I need to bring for this race?")})
-                        let schedulePosition = sortedCategories.firstIndex(where: { $0.contains("Schedule")})
                     
                         var generalInfo = [String]()
                         if let generalInfoPosition = generalInfoPosition { 
